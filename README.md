@@ -1,5 +1,7 @@
 # API-Buzzer
 
+This is a Node.js API for interact with a buzzer connected to a Raspberry Pi.  
+
 ### 📝 Requirements
 * Node.js 10 or higher
 
