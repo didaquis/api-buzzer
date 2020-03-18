@@ -25,7 +25,7 @@ class Buzzer {
 		if (!Buzzer.instance) {
 			this.gpio = gpio;
 			this.defaultSecondsPause = 1;
-			this.defaultMilisecondsPause = 250;
+			this.defaultMilisecondsPause = 50;
 			Buzzer.instance = this;
 		}
 		return Object.freeze(Buzzer.instance);

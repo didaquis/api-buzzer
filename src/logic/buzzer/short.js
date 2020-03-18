@@ -8,9 +8,11 @@ const buzzer = new Buzzer(enviromentConfiguration.gpio);
  * Short logic
  * @return {String}
  */
-module.exports = async () => {
-	buzzer.start();
-	buzzer.hold();
-	buzzer.stop();
-	return 'buzz';
+module.exports = () => {
+	setTimeout(function (){
+		buzzer.start();
+		buzzer.microHold(50);
+		buzzer.stop();
+	}, 0);
+	return 'beep';
 };

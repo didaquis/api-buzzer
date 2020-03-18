@@ -2,6 +2,11 @@
 
 This is a Node.js API for interact with a buzzer connected to a Raspberry Pi.  
 
+
+### Problems??
+* If you are using UFW firewall on Raspbian, ensures the http trafic is allowed: `sudo ufw allow from 192.168.1.0/24` (this allow all traffic from the network 192.168.1.0). Maybe you prefer allow all trafic for an specific port of API-Buzzer: `sudo ufw allow 31415/tcp`
+
+
 ### 📝 Requirements
 * Node.js 10 or higher
 
