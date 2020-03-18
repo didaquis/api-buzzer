@@ -7,6 +7,7 @@ const cors = require('cors');
 
 const { logger, endLogger } = require('./utils/logger');
 const { getListOfIPV4Address } = require('./utils/server-helpers');
+const { statusCodeOk, statusCode404 } = require('./utils/router-helpers');
 const { enviromentConfiguration } = require('./appConfig');
 const Buzzer = require('./lib/Buzzer');
 const buzzer = new Buzzer(enviromentConfiguration.gpio);
@@ -23,11 +24,11 @@ const initAPI = () => {
 	app.use('/api-buzzer', routes);
 
 	app.use(/\//, (req, res) => {
-		res.status(200).send('Welcome to API Buzzer!'); // eslint-disable-line no-magic-numbers
+		res.status(statusCodeOk).send('Welcome to API Buzzer!');
 	});
 
 	app.use((req, res) => {
-		res.status(404).send('404'); // eslint-disable-line no-magic-numbers
+		res.status(statusCode404).send('404');
 	});
 
 	app.listen(enviromentConfiguration.port, () => {

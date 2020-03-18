@@ -2,6 +2,8 @@
 
 const rpio = require('rpio');
 
+const { logger } = require('../utils/logger');
+
 /* Home doc */
 /**
  * @file Buzzer class (singleton) give method to interact with buzzer
@@ -24,8 +26,8 @@ class Buzzer {
 	constructor (gpio) {
 		if (!Buzzer.instance) {
 			this.gpio = gpio;
-			this.defaultSecondsPause = 1;
 			this.defaultMilisecondsPause = 50;
+			this.warningHandler();
 			Buzzer.instance = this;
 		}
 		return Object.freeze(Buzzer.instance);
@@ -52,21 +54,17 @@ class Buzzer {
 	}
 
 	/*
-	 * The sleep function block, but rarely in these simple programs does
-	 * one care about that. Use a setInterval()/setTimeout() loop instead
-	 * if it matters.
+	 * The msleep function block the application. Use a setInterval()/setTimeout() loop instead if it matters.
 	 */
-	hold (seconds = this.defaultSecondsPause) {
-		rpio.sleep(seconds);
+	hold (milis = this.defaultMilisecondsPause) {
+		rpio.msleep(milis);
 	}
 
-	/*
-	 * The msleep function block, but rarely in these simple programs does
-	 * one care about that. Use a setInterval()/setTimeout() loop instead
-	 * if it matters.
-	 */
-	microHold (milis = this.defaultMilisecondsPause) {
-		rpio.msleep(milis);
+	warningHandler () {
+		/* Override default warn handler to use custom logger */
+		rpio.on('warn', function (warning) {
+			logger.warn(`Buzzer: ${warning}`);
+		});
 	}
 }
 

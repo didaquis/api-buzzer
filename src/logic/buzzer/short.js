@@ -11,7 +11,7 @@ const buzzer = new Buzzer(enviromentConfiguration.gpio);
 module.exports = () => {
 	setTimeout(function (){
 		buzzer.start();
-		buzzer.microHold(50);
+		buzzer.hold(50); // eslint-disable-line no-magic-numbers
 		buzzer.stop();
 	}, 0);
 	return 'beep';

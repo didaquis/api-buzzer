@@ -34,4 +34,11 @@ const statusCodeOk = 200;
  */
 const statusCodeError = 400;
 
-module.exports = { success, fail, statusCodeOk, statusCodeError };
+/**
+ * @constant
+ * @type {Number}
+ * @default
+ */
+const statusCode404 = 404;
+
+module.exports = { success, fail, statusCodeOk, statusCodeError, statusCode404 };
