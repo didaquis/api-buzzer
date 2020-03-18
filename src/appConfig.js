@@ -15,7 +15,7 @@ require('dotenv').config();
  */
 
 const serverPortByDefault = 31415;
-const GPIOByDefault = 16; // Physical P01-P40 numbering. P16 <-> GPIO23
+const GPIOByDefault = 16; // Physical P01-P40 numbering
 
 /**
  * Enviroment variables configuration
