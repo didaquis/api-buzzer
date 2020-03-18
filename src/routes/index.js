@@ -9,9 +9,21 @@ const routes = Router();
 const debug = require('./debug');
 
 /**
+ * Handlers for buzzer
+ */
+const buzzer = require('./buzzer');
+
+
+/**
  * Routes for debug
  */
 routes.get('/ping', debug.ping);
+
+
+/**
+ * Routes for buzzer
+ */
+routes.get('/short', buzzer.short);
 
 
 module.exports = routes;
