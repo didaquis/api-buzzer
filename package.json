@@ -1,6 +1,6 @@
 {
   "name": "api-buzzer",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "An API for interact with a buzzer connected to a Raspberry Pi",
   "main": "src/server.js",
   "engines": {
@@ -9,7 +9,6 @@
   "scripts": {
     "start": "node .",
     "dev": "nodemon .",
-    "debug": "devtool .",
     "lint": "eslint --ext .js .",
     "purge": "rm -fr ./logs"
   },

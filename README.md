@@ -2,6 +2,7 @@
 
 This is a Node.js API for interact with a buzzer connected to a Raspberry Pi.  
 
+Example of use: `http://192.168.1.35:31415/api-buzzer/short` (of course, you need to use the correct IP and port).
 
 ### 📝 Requirements
 * Node.js 10 or higher
@@ -10,7 +11,9 @@ This is a Node.js API for interact with a buzzer connected to a Raspberry Pi.
 * 2 female-female jumper wires
 
 ### 📚 How to prepare the hardware
-
+1. Make sure the Raspberry Pi is not turned on.  
+2. Connect a wire from the negative pole of the buzzer to some ground pin.  
+3. Connect the other wire from the positive pole of the buzzer to some GPIO pin. By default, the application expects you to use the pin number 16 (physical numbering, pattern P1-P40). If you prefer to use another GPIO pin, be sure to configure the `.env` file.  
 
 ![hardware.jpg](./docs-assets/hardware.jpg)
 
@@ -41,6 +44,5 @@ Some tips for solving most common problems:
 
 ### 💻 Tricks for development
 * Run app in dev mode: `npm run dev`
-* Run app in debugger mode: `npm run debug`
 * Run the linter: `npm run lint`
 * Delete all log files: `npm run purge`
