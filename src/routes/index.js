@@ -11,6 +11,7 @@ const buzzer = require('./buzzer');
 routes.get('/short', buzzer.short);
 routes.get('/medium', buzzer.medium);
 routes.get('/long', buzzer.long);
+routes.get('/extra-long', buzzer.extraLong);
 
 
 module.exports = routes;
