@@ -1,6 +1,6 @@
 {
   "name": "api-buzzer",
-  "version": "0.2.10",
+  "version": "0.2.11",
   "description": "An API for interact with a buzzer connected to a Raspberry Pi",
   "main": "src/server.js",
   "engines": {
