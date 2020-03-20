@@ -4,21 +4,30 @@ require('dotenv').config();
 
 /* Home doc */
 /**
- * @file Enviroment variables configuration for the application
+ * @file The configuration of the application environment variables
  * @see module:appConfig
  */
 
 /* Module doc */
 /**
- * Enviroment variables configuration for the application
+ * The configuration of the application environment variables
  * @module appConfig
  */
 
+/**
+ * Default port server
+ * @type {Number}
+ */
 const serverPortByDefault = 31415;
-const GPIOByDefault = 16; // Physical P01-P40 numbering
 
 /**
- * Enviroment variables configuration
+ * Default GPIO pin. Using physical P01-P40 numbering
+ * @type {Number}
+ */
+const GPIOByDefault = 16;
+
+/**
+ * Application environment variables
  * @type {object}
  */
 const enviromentConfiguration = Object.freeze({
@@ -27,5 +36,4 @@ const enviromentConfiguration = Object.freeze({
 });
 
 
-/** Variables configuration */
 module.exports = { enviromentConfiguration };

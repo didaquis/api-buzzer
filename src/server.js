@@ -9,11 +9,15 @@ const { logger, endLogger } = require('./utils/logger');
 const { getListOfIPV4Address } = require('./utils/server-helpers');
 const { success, fail, statusCodeOk, statusCode404, getApiEndpoints } = require('./utils/router-helpers');
 const { enviromentConfiguration } = require('./appConfig');
+
 const Buzzer = require('./lib/Buzzer');
 const buzzer = new Buzzer(enviromentConfiguration.gpio);
 
 buzzer.init();
 
+/**
+ * Init Express server
+ */
 const initAPI = () => {
 	const app = express();
 
@@ -39,7 +43,6 @@ const initAPI = () => {
 			logger.info(`Application running on: http://${ip}:${enviromentConfiguration.port}`);
 		});
 	});
-
 };
 
 initAPI();
