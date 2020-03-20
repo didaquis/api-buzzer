@@ -41,4 +41,20 @@ const statusCodeError = 400;
  */
 const statusCode404 = 404;
 
-module.exports = { success, fail, statusCodeOk, statusCodeError, statusCode404 };
+/**
+ * Return an Array with all valid endpoints of the API
+ * @param  {String} ApiDomain - Base URL of API
+ * @param  {Object} routes    - Express router object
+ * @return {Array<String>}
+ */
+const getApiEndpoints = (ApiDomain, routes) => {
+	const endpoints = [];
+	routes.stack.forEach(function (r){
+		if (r.route && r.route.path){
+			endpoints.push(`${ApiDomain}${r.route.path}`);
+		}
+	});
+	return endpoints;
+};
+
+module.exports = { success, fail, statusCodeOk, statusCodeError, statusCode404, getApiEndpoints };

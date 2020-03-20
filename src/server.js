@@ -7,7 +7,7 @@ const cors = require('cors');
 
 const { logger, endLogger } = require('./utils/logger');
 const { getListOfIPV4Address } = require('./utils/server-helpers');
-const { statusCodeOk, statusCode404 } = require('./utils/router-helpers');
+const { success, fail, statusCodeOk, statusCode404, getApiEndpoints } = require('./utils/router-helpers');
 const { enviromentConfiguration } = require('./appConfig');
 const Buzzer = require('./lib/Buzzer');
 const buzzer = new Buzzer(enviromentConfiguration.gpio);
@@ -20,17 +20,20 @@ const initAPI = () => {
 	app.use(cors({ credentials: true }));
 	app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
+	const ApiDomain = '/api-buzzer';
 	const routes = require('./routes');
-	app.use('/api-buzzer', routes);
+	app.use(ApiDomain, routes);
 
-	app.use(/\//, (req, res) => {
-		res.status(statusCodeOk).send('Welcome to API Buzzer!');
+	const availableEnpoints = getApiEndpoints(ApiDomain, routes);
+
+	const root = /\//;
+	app.use(root, (req, res) => {
+		res.status(statusCodeOk).json(success({ salute: 'Welcome to the API Buzzer!', availableEnpoints: availableEnpoints }));
 	});
 
 	app.use((req, res) => {
-		res.status(statusCode404).send('404');
+		res.status(statusCode404).json(fail('404 - Not found'));
 	});
-
 	app.listen(enviromentConfiguration.port, () => {
 		getListOfIPV4Address().forEach(ip => {
 			logger.info(`Application running on: http://${ip}:${enviromentConfiguration.port}`);
