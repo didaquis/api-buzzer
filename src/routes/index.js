@@ -24,6 +24,8 @@ routes.get('/ping', debug.ping);
  * Routes for buzzer
  */
 routes.get('/short', buzzer.short);
+routes.get('/medium', buzzer.medium);
+routes.get('/long', buzzer.long);
 
 
 module.exports = routes;
